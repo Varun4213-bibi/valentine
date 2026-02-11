@@ -1,0 +1,1643 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Will You Be My Valentine? ❤️</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Great+Vibes&display=swap" rel="stylesheet">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>❤️</text></svg>">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body style="margin: 0; padding: 0;">
+    <!-- TASK 2: Preloader -->
+    <div id="preloader" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #ffffff; display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 10000; transition: opacity 0.5s ease;">
+        <div class="heart-loader" style="font-size: 5rem; animation: heartBeat 1.2s infinite;">❤️</div>
+        <p style="font-weight: 800; margin-top: 20px; color: #000;">Loading our love... ✨</p>
+    </div>
+
+    <div class="container">
+        <div id="valentine-card">
+            <h1 id="question">Will you be my Valentine kunju ❤️</h1>
+            <div id="main-gif">
+                <img src="el%20gato.jpg" alt="Kunju Photo" style="max-width: 250px; border-radius: 15px; margin-bottom: 1rem; border: 3px solid #ff4d6d;">
+            </div>
+            <div class="buttons">
+                <button id="yes-btn">YES! 😍</button>
+                <button id="no-btn">No 😢</button>
+            </div>
+            
+            <div id="response" class="hidden">
+                <h1>Yay! I love you so much! 💖✨</h1>
+                <img src="kitty_smiling.jpg" alt="Smiling Kitty" style="max-width: 200px; border-radius: 15px; border: 3px solid #ff4d6d; margin-bottom: 1rem;">
+                <p class="personal-message">Happy valentine❤️..... Every day with you is a gift! 🌹</p>
+                <button id="view-gifts-btn">you need any gift? I know I am the best gift for you!click for gifts🎁</button>
+            </div>
+
+            <div id="decision-page" class="hidden">
+                <h1> 💖</h1>
+                <p class="personal-message">Now, prepare yourself for some surprises... ✨</p>
+                <button id="show-floating-gifts">Open your Gifts 💝</button>
+            </div>
+
+            <div id="floating-gifts-container" class="hidden">
+                <h1 class="gift-title">Select a Surprise 🎈choose one by one</h1>
+                
+                <div class="relationship-timer">
+                    <h3>We've Been Together For... ❤️</h3>
+                    <div id="together-timer">
+                        <div class="timer-segment">
+                            <span id="years">0</span>
+                            <small>Years</small>
+                        </div>
+                        <div class="timer-segment">
+                            <span id="months">0</span>
+                            <small>Months</small>
+                        </div>
+                        <div class="timer-segment">
+                            <span id="weeks">0</span>
+                            <small>Weeks</small>
+                        </div>
+                        <div class="timer-segment">
+                            <span id="days">0</span>
+                            <small>Days</small>
+                        </div>
+                        <div class="timer-segment">
+                            <span id="hours">00</span>
+                            <small>Hours</small>
+                        </div>
+                        <div class="timer-segment">
+                            <span id="minutes">00</span>
+                            <small>Mins</small>
+                        </div>
+                        <div class="timer-segment">
+                            <span id="seconds">00</span>
+                            <small>Secs</small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gifts-float-area">
+                    <div class="floating-gift" id="open-gift1" style="--delay: 0s;">
+                        <div class="gift-box-large">
+                            <span class="gift-number">1</span>
+                            <img src="giftbox.png" alt="Gift 1" class="gift-img-asset">
+                        </div>
+                    </div>
+                    
+                    <div class="floating-gift" id="open-gift2" style="--delay: 2s;">
+                        <div class="gift-box-large">
+                            <span class="gift-number">2</span>
+                            <img src="giftbox.png" alt="Gift 2" class="gift-img-asset">
+                        </div>
+                    </div>
+                    
+                    <div class="floating-gift" id="open-gift3" style="--delay: 4s;">
+                        <div class="gift-box-large">
+                            <span class="gift-number">3</span>
+                            <img src="giftbox.png" alt="Gift 3" class="gift-img-asset">
+                        </div>
+                    </div>
+
+                    <div class="floating-gift" id="open-gift4" style="--delay: 1s;">
+                        <div class="gift-box-large">
+                            <span class="gift-number">4</span>
+                            <img src="giftbox.png" alt="Gift 4" class="gift-img-asset">
+                        </div>
+                    </div>
+
+                    <div class="floating-gift" id="open-gift5" style="--delay: 3s;">
+                        <div class="gift-box-large">
+                            <span class="gift-number">5</span>
+                            <img src="giftbox.png" alt="Gift 5" class="gift-img-asset">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="love-bank-section">
+                    <div class="love-bank-card">
+                        <h3>Unlimited Hugs & Kisses 💋
+                            give me 100 hugs and 100 kisses to unlock a special surprise!
+                        </h3>
+                        <p class="personal-message">Tap the buttons to send  ❤️</p>
+                        
+                        <div class="love-bank-stats">
+                            <div class="stat-item">
+                                <span class="stat-emoji">🫂</span>
+                                <div class="stat-label">Hugs Sent</div>
+                                <div id="hugs-count" class="stat-value">0</div>
+                            </div>
+                            <!-- TASK 4: Progress Bar Wrapper -->
+                            <div style="flex-grow: 1; height: 20px; background: #eee; border-radius: 10px; overflow: hidden; position: relative; border: 2px solid #000; margin: 0 10px;">
+                                <div id="love-progress-bar" style="width: 0%; height: 100%; background: linear-gradient(90deg, #ff4d6d, #ff758f); transition: width 0.3s ease;"></div>
+                                <span id="progress-percent" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 0.7rem; font-weight: 800; color: #000;">0%</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-emoji">💋</span>
+                                <div class="stat-label">Kisses Sent</div>
+                                <div id="kisses-count" class="stat-value">0</div>
+                            </div>
+                        </div>
+
+                        <div class="love-buttons">
+                            <button id="send-hug-btn" class="love-action-btn">Give a Hug 🫂</button>
+                            <button id="send-kiss-btn" class="love-action-btn pink">Give a Kiss 💋</button>
+                        </div>
+
+                        <!-- Claim Reward Button -->
+                        <div id="reward-button-container" class="hidden" style="margin-top: 2rem; text-align: center;">
+                            <button id="claim-reward-btn" class="claim-btn">Claim Reward 🎁✨</button>
+                        </div>
+
+                        <!-- Video Milestone Reward -->
+                        <div id="video-milestone-reward" class="hidden" style="margin-top: 2rem; animation: fadeIn 1s ease;">
+                            <h3 style="font-size: 1.5rem;">🎉 Milestone Reached! 🎉</h3>
+                            <p class="personal-message">You've unlocked a special gift✨</p>
+                            <div class="video-container-modern" style="margin: 15px auto; width: 100%;">
+                                <video id="reward-video" src="videooo.mp4" controls playsinline style="width: 100%; border-radius: 15px; border: 3px solid #ff4d6d;"></video>
+                            </div>
+                            <p style="color: #ff4d6d; font-weight: 600;">need more hugs and kisses! 💖</p>
+                        </div>
+
+                        <div id="love-notification" class="love-notif">received ❤️</div>
+                    </div>
+                </div>
+
+                <!-- NEW: Message Back Section -->
+                <div id="final-message-section" style="margin-top: 3rem; padding: 0 20px 50px;">
+                    <div class="love-bank-card" style="background: white; border: 3px solid #000; border-radius: 25px;">
+                        <h3 style="color: #000; font-weight: 800;">Write a Letter to Me 💌</h3>
+                        <p style="color: #333; margin-bottom: 1rem; font-weight: 600;">Say anything about these gifts! Write a review or feedback after opening all 5 gifts. and send it to me ❤️</p>
+                        
+                        <textarea id="reply-message" placeholder="Type your heart out here (or review the gifts!)..." style="width: 100%; height: 150px; padding: 15px; border-radius: 15px; border: 2px solid #000; font-family: inherit; font-size: 1.1rem; margin-bottom: 1.5rem; resize: none;"></textarea>
+                        
+                        <button id="send-reply-btn" style="background: #000; color: white; border: none; padding: 15px 30px; border-radius: 50px; font-weight: 800; cursor: pointer; width: 100%; font-size: 1.2rem; display: flex; align-items: center; justify-content: center; gap: 10px; transition: transform 0.2s;">
+                            Send this Message 💻❤️
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Gift Pages -->
+        <!-- Gift Pages -->
+        <div id="gift1-page" class="gift-page hidden">
+            <div class="page-content song-template">
+                <div class="song-card">
+                    <h3>for you 🎵</h3>
+                    <div class="album-art">
+                        <img src="1770188695402.jpg" alt="Perfect Song Cover">
+                    </div>
+                    <div class="song-info">
+                        <p class="song-title">Perfect</p>
+                        <p class="artist-name">Ed Sheeran</p>
+                    </div>
+                    <div class="lyrics-container">
+                        <div class="lyrics-scroll"> 
+                            <p>"'Cause we were just kids when we fell in love</p>
+                            <p>Not knowing what it was</p>
+                            <p>I will not give you up this time</p>
+                            <p>But darling, just kiss me slow</p>
+                            <p>Your heart is all I own</p>
+                            <p>And in your eyes, you're holding mine"</p>
+                        </div>
+                    </div>
+                    
+                    <div class="custom-audio-player">
+                        <audio id="bg-music" loop>
+                            <source src="perfect_ed_sheeran.mp3" type="audio/mpeg">
+                        </audio>
+                        <button id="play-pause-btn" class="modern-play-btn">
+                            <div class="play-icon-modern"></div>
+                        </button>
+                        <div class="player-controls">
+                            <div class="progress-bar-container">
+                                <div id="progress-bar"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="back-btn">Back to Gifts ❤️</button>
+            </div>
+        </div>
+
+        <div id="gift2-page" class="gift-page hidden">
+            <div class="page-content memory-page">
+                <h3>Our Special Memories 💖</h3>
+                <audio id="gift2-music" loop>
+                    <source src="Mann%20Mera%20Table%20No.%2021%20320%20Kbps.mp3" type="audio/mpeg">
+                </audio>
+                <div class="memory-grid">
+                    <div class="memory-item">
+                        <img src="photo_2026-02-04_12-23-10.jpg" alt="Memory 1">
+                        <div class="memory-caption">Forever❤️</div>
+                    </div>
+                    <div class="memory-item">
+                        <img src="photo_2026-02-04_12-23-30.jpg" alt="Memory 2">
+                        <div class="memory-caption">My fav ✨</div>
+                    </div>
+                    <div class="memory-item">
+                        <video src="Snapchat-321500500.mp4" controls muted loop autoplay playsinline></video>
+                        <div class="memory-caption">! 🥰</div>
+                    </div>
+                    <div class="memory-item">
+                        <img src="photo_2026-02-04_12-23-37.jpg" alt="Memory 3">
+                        <div class="memory-caption">Smile 🌹</div>
+                    </div>
+                    <div class="memory-item">
+                        <video src="VID-20260204-WA0026.mp4" controls muted loop autoplay playsinline></video>
+                        <div class="memory-caption">💖</div>
+                    </div>
+                    <div class="memory-item">
+                        <img src="photo_2026-02-04_12-23-47.jpg" alt="Memory 4">
+                        <div class="memory-caption">Just Us 🧸</div>
+                    </div>
+                   
+                    <div class="memory-item">
+                        <video src="VID-20260204-WA0033.mp4" controls muted loop autoplay playsinline></video>
+                        <div class="memory-caption"> Love 🍭</div>
+                    </div>
+                    <div class="memory-item">
+                        <video src="VID-20260204-WA0034.mp4" controls muted loop autoplay playsinline></video>
+                        <div class="memory-caption"> 🌈</div>
+                    </div>
+                    <div class="memory-item">
+                        <video src="VID-20260204-WA0028.mp4" controls muted loop autoplay playsinline></video>
+                        <div class="memory-caption">Sweet Memories 🍦</div>
+                    </div>
+                    <div class="memory-item">
+                        <video src="VID-20260204-WA0029.mp4" controls muted loop autoplay playsinline></video>
+                        <div class="memory-caption"> 💃</div>
+                    </div>
+                    <div class="memory-item">
+                        <video src="VID-20260204-WA0030.mp4" controls muted loop autoplay playsinline></video>
+                        <div class="memory-caption"> 🌟</div>
+                    </div>
+                    <div class="memory-item">
+                        <video src="VID-20260204-WA0031.mp4" controls muted loop autoplay playsinline></video>
+                        <div class="memory-caption">Pure🎀</div>
+                    </div>
+                    <div class="memory-item">
+                        <video src="VID-20260204-WA0032.mp4" controls muted loop autoplay playsinline></video>
+                        <div class="memory-caption"> 🎈</div>
+                    </div>
+                    <div class="memory-item">
+                        <img src="1770188695393.jpg" alt="Memory New 1">
+                        <div class="memory-caption">😍</div>
+                    </div>
+                    <div class="memory-item">
+                        <img src="1770188695402.jpg" alt="Memory New 2">
+                        <div class="memory-caption"> 🍭</div>
+                    </div>
+                    <div class="memory-item">
+                        <video src="lv_0_20250627224744L54778086.mp4" controls muted loop autoplay playsinline></video>
+                        <div class="memory-caption"> 🎵</div>
+                    </div>
+                    <div class="memory-item">
+                        <img src="1770188695479.jpg" alt="Memory New 3">
+                        <div class="memory-caption">📸</div>
+                    </div>
+                    <div class="memory-item">
+                        <img src="1770188695485.jpg" alt="Memory New 4">
+                        <div class="memory-caption">💭</div>
+                    </div>
+                    <div class="memory-item">
+                        <video src="Snapchat-1010124468L5232749.mp4" controls muted loop autoplay playsinline></video>
+                        <div class="memory-caption"> 🤳</div>
+                    </div>
+                    <div class="memory-item">
+                        <video src="Snapchat-1479516565L4841665.mp4" controls muted loop autoplay playsinline></video>
+                        <div class="memory-caption">💎</div>
+                    </div>
+                    <div class="memory-item">
+                        <video src="Snapchat-2018473398L507261.mp4" controls muted loop autoplay playsinline></video>
+                        <div class="memory-caption">Pure Joy 🌈</div>
+                    </div>
+                    <div class="memory-item">
+                        <video src="Snapchat-2079625509L9500570.mp4" controls muted loop autoplay playsinline></video>
+                        <div class="memory-caption"> 😜</div>
+                    </div>
+                    <div class="memory-item">
+                        <video src="Snapchat-752987105L477891.mp4" controls muted loop autoplay playsinline></video>
+                        <div class="memory-caption">My ☀️</div>
+                    </div>
+                    <div class="memory-item">
+                        <video src="Snapchat-82033752L3488345.mp4" controls muted loop autoplay playsinline></video>
+                        <div class="memory-caption">Love this! ❤️</div>
+                    </div>
+                    <div class="memory-item">
+                        <video src="VID-20240602-WA0095L548163.mp4" controls muted loop autoplay playsinline></video>
+                        <div class="memory-caption">🕰️</div>
+                    </div>
+                    
+                    <div class="memory-item">
+                        <video src="VID-20250509-WA0015L456440.mp4" controls muted loop autoplay playsinline></video>
+                        <div class="memory-caption">💍</div>
+                    </div>
+                </div>
+                <button class="back-btn">Back to Gifts ❤️</button>
+            </div>
+        </div>
+
+        <div id="gift3-page" class="gift-page hidden">
+            <div class="page-content">
+                <h3>message 💌</h3>
+                <audio id="gift3-music" loop>
+                    <source src="heropanti_rabba.mp3" type="audio/mpeg">
+                </audio>
+                <div class="letter-page">
+Dear kunju thalle💖,
+
+While writing this letter, I am just thinking about the past 4 years... how much our life has changed since the day you came into my life ✨. Still, I don't even know the specific answer to the question of why I started loving you, but I am damn sure and I can feel that my love towards you is becoming stronger day by day 📈❤.
+
+Do you know why I love you this much? You showed me the beauty of love that we've only seen in movies 🎬🌹. I started to love music because of you (mainly Hindi songs, you know which they are 🎵🎶). I started to watch and get addicted to movies because of you 🍿. I started a skin care routine because of you... 😂 Now I am hitting the gym and trying to eat healthy 💪🥗.But bro, I have one thing to say: I really, really care about your health and it really hurts when you eat unhealthy foods 🥺. The thing is, I still love buying these food items for you and I will keep doing this... but try to eat healthy, drink more water 💧, and please, please try to sleep more 😴🌙. 
+
+I don't know whether it is love or lust,everytime I see you, I want to hug you  tighter and kiss  on your lips and in cherries... 🍒💋 I love making you feel special. Do I make you feel special? Or do only you make me feel special? 💖 I don't even know what I will do without you; I hope that day never comes 🔒.
+
+Edi nayi kunjumma... love you pannikutty ❤️ Entha le engane irunna njana... ippo ninne impress cheyyan vendi oronnu cheyyunnu 😜✨.
+
+Okay, another thing I want to know: Do you love me more than I love you? Or do I love you more? Or do we both love each other equally? 🤔💞 Adhyam okke njan ingane long text okke ezhuthillaarnnu, ippo anel nokke ezhuthittum ezhuthittum content kazhiyunilla... ndhkyo 😅.
+
+Kore parayan und, pinne Ferrero vaangiyathu enikkaariya ni gift onnum angane over expect aakoolannu, but I know it will make you happy 🍫🎁. Athukonda njan evidunnokkeyo cash ready aakki athu vaangithannathu. I hope this trend never ends ♾.
+
+i hope you know why i added this music rabba rabba in this gift
+
+I wish and hope that we will be together forever and we will make each other happy nd cry all the time. ❤️
+
+once again happy valentine's day to the girl who i love the most in the whole world 🌎❤️.
+<br><br>
+<div style="text-align: center;">
+    <span id="show-darla-text" style="cursor: pointer; text-decoration: underline; color: #000000; font-weight: 800; font-size: 1.2rem;">show video</span>
+</div>
+
+<div id="darla-video-container" class="hidden" style="margin-top: 2rem; text-align: center; animation: fadeIn 1s ease;">
+    <video id="darla-video" src="darla.mp4" controls playsinline style="width: 100%; border-radius: 15px; border: 3px solid #000000;"></video>
+</div>
+
+                </div>
+                <button class="back-btn">Back to Gifts ❤️</button>
+            </div>
+        </div>
+
+        <div id="gift4-page" class="gift-page hidden bouquet-theme">
+            <div class="page-content bouquet-card">
+                <div class="bouquet-layout">
+                    <div class="bouquet-text">
+                        <h2>Tadaaa....<br>your virtual bouquet!</h2>
+                        <ul class="reasons-list">
+                            <li>For surviving all the ups and downs.</li>
+                            <li>For always hyping me up like a boss.</li>
+                            <li>For listening to my overthinking </li>
+                            <li>For being chaos in calm</li>
+                            <li>For existing exactly as you are.</li>
+                            <li>For making me happy when you're sad.</li>
+                            <li>For making me mad when you're mad.</li>
+                            <li>for making me cry  when you're sad</li>
+                        </ul>
+                        <p class="keep-safe">Keep this bouquet safe, </p>
+                    </div>
+                    <div class="bouquet-visual">
+                        <img src="kitty_bouquet.jpg" alt="Kitty with Bouquet" class="bouquet-img">
+                    </div>
+                </div>
+                <button class="back-btn">Go back to Gift Room</button>
+            </div>
+        </div>
+
+        <div id="gift5-page" class="gift-page hidden chocolate-theme">
+            <!-- Instructions Layer -->
+            <div id="shop-instructions-layer" class="page-content instruction-card">
+                <h2>Welcome to Kunju Shopping App! 🛍️✨</h2>
+                <div class="instruction-body">
+                    <p class="funny-text">⚠️ <b>WARNING:</b> Your account has a balance of "Infinity ❤️". If you don't spend it all, it expires in 100 years!</p>
+                    
+                    <ul class="rules-list">
+                        <li>✅ You can add <b>anything</b> you like. Budget? What's that?</li>
+                        <li>✅ Minimum order: 1 hug.</li>
+                        <li>✅ Maximum order: There is no limit to how much I love you.</li>
+                        <li>❌ No refunds allowed (I'm keeping you forever anyway).</li>
+                        <li>🚚 Faster delivery than Zepto,</li>
+                    </ul>
+                    
+                    <p class="romantic-note">" Pick your items" 👑🌹</p>
+                </div>
+                <button id="enter-shop-btn">start Shopping! 💃💖</button>
+            </div>
+
+            <!-- Order Success Layer -->
+            <div id="chocolate-animation-layer" class="hidden">
+                <div class="page-content">
+                    <div class="chocolate-card success-card">
+                        <div class="success-icon">💝</div>
+                        <h3>Order is on its way to you! 🚚💨</h3>
+                        <p class="chocolate-note">Estimated delivery: 10 Months</p>
+                        
+                        <div class="romantic-message-box">
+                            <p>I wish I could deliver these to you myself, but for now, I can't fly! 😉</p>
+                            <p>Special price for my favorite person: <strong>₹0 (Priceless ❤️)</strong></p>
+                            <p>I hope these gifts make your day special!</p>
+                        </div>
+
+                        <button class="back-btn highlight">Return to Gifts ❤️</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Shop Layer -->
+            <div id="chocolate-shop-layer" class="chocolate-shop-layer hidden">
+                <div class="shop-header-mock">
+                    <div class="zepto-logo">kunju shopping app</div>
+                    <div style="font-size: 0.9rem; font-weight: 600;">Select Location ▾</div>
+                    <div class="search-bar-mock">
+                        <span>🔍</span>
+                        <span>Search for gifts, dresses, jewelry...</span>
+                    </div>
+                    <div class="nav-icons-mock">
+                        <span>👤 Login</span>
+                        <span>🛒 Cart</span>
+                    </div>
+                </div>
+                <div class="shop-card">
+                    <div style="padding: 10px 40px; font-size: 0.85rem; color: #666;">Showing results for "<b>Valentine Special</b>"</div>
+                    <div class="shop-grid">
+                        <!-- Ferrero -->
+                        <div class="shop-item-card">
+                            <div class="item-img-container">
+                                <img src="ferraro.jpg" alt="Ferrero">
+                                <button class="add-badge">ADD</button>
+                                <div class="quantity-control hidden">
+                                    <button class="qty-btn minus">-</button>
+                                    <span class="qty-val">0</span>
+                                    <button class="qty-btn plus">+</button>
+                                </div>
+                            </div>
+                            <div class="item-details">
+                                <div class="price-row">
+                                    <span class="curr-price">₹223</span>
+                                    <span class="old-price">₹495</span>
+                                </div>
+                                <div class="discount-text">₹272 OFF</div>
+                                <h4 class="item-name">Ferrero Rocher Premium Hazelnut</h4>
+                                <div class="item-meta">1 pack (200g)</div>
+                                <div class="item-tag">Milk Chocolate</div>
+                                <div class="item-rating">⭐ 4.8 (176)</div>
+                            </div>
+                        </div>
+
+                        <!-- Buldak Carbonara -->
+                        <div class="shop-item-card">
+                            <div class="item-img-container">
+                                <img src="buldak_carbonara.jpg" alt="Buldak Carbonara">
+                                <button class="add-badge">ADD</button>
+                                <div class="quantity-control hidden">
+                                    <button class="qty-btn minus">-</button>
+                                    <span class="qty-val">0</span>
+                                    <button class="qty-btn plus">+</button>
+                                </div>
+                            </div>
+                            <div class="item-details">
+                                <div class="price-row">
+                                    <span class="curr-price">₹145</span>
+                                    <span class="old-price">₹199</span>
+                                </div>
+                                <div class="discount-text">₹54 OFF</div>
+                                <h4 class="item-name">Buldak Carbonara Spicy Ramen</h4>
+                                <div class="item-meta">5 Pack Bundle (140g x 5)</div>
+                                <div class="item-tag">Spicy & Creamy</div>
+                                <div class="item-rating">⭐ 4.9 (2.1k)</div>
+                            </div>
+                        </div>
+
+                        <!-- KitKat -->
+                        <div class="shop-item-card">
+                            <div class="item-img-container">
+                                <img src="kitkat.jpg" alt="KitKat">
+                                <button class="add-badge">ADD</button>
+                                <div class="quantity-control hidden">
+                                    <button class="qty-btn minus">-</button>
+                                    <span class="qty-val">0</span>
+                                    <button class="qty-btn plus">+</button>
+                                </div>
+                            </div>
+                            <div class="item-details">
+                                <div class="price-row">
+                                    <span class="curr-price">₹45</span>
+                                    <span class="old-price">₹53</span>
+                                </div>
+                                <div class="discount-text">₹8 OFF</div>
+                                <h4 class="item-name">Nestlé KitKat Share Bag</h4>
+                                <div class="item-meta">1 pack (36g)</div>
+                                <div class="item-tag">Milk Chocolate</div>
+                                <div class="item-rating">⭐ 5.0 (52.6k)</div>
+                            </div>
+                        </div>
+
+                        <!-- Raffaello -->
+                        <div class="shop-item-card">
+                            <div class="item-img-container">
+                                <img src="raffaello.jpg" alt="Raffaello">
+                                <button class="add-badge">ADD</button>
+                                <div class="quantity-control hidden">
+                                    <button class="qty-btn minus">-</button>
+                                    <span class="qty-val">0</span>
+                                    <button class="qty-btn plus">+</button>
+                                </div>
+                            </div>
+                            <div class="item-details">
+                                <div class="price-row">
+                                    <span class="curr-price">₹386</span>
+                                    <span class="old-price">₹795</span>
+                                </div>
+                                <div class="discount-text">₹409 OFF</div>
+                                <h4 class="item-name">Raffaello Coconut Confetteria</h4>
+                                <div class="item-meta">Premium Almond Box (250g)</div>
+                                <div class="item-tag">Coconut Delight</div>
+                                <div class="item-rating">⭐ 4.4 (73)</div>
+                            </div>
+                        </div>
+
+                        <!-- Mars Bar -->
+                        <div class="shop-item-card">
+                            <div class="item-img-container">
+                                <img src="mars_bar.jpg" alt="Mars Bar">
+                                <button class="add-badge">ADD</button>
+                                <div class="quantity-control hidden">
+                                    <button class="qty-btn minus">-</button>
+                                    <span class="qty-val">0</span>
+                                    <button class="qty-btn plus">+</button>
+                                </div>
+                            </div>
+                            <div class="item-details">
+                                <div class="price-row">
+                                    <span class="curr-price">₹65</span>
+                                    <span class="old-price">₹80</span>
+                                </div>
+                                <div class="discount-text">₹15 OFF</div>
+                                <h4 class="item-name">Mars Caramel Chocolate Bar</h4>
+                                <div class="item-meta">Energy Bar (51g)</div>
+                                <div class="item-tag">Caramel & Nougat</div>
+                                <div class="item-rating">⭐ 4.7 (1.5k)</div>
+                            </div>
+                        </div>
+
+                        <!-- Buldak Spicy -->
+                        <div class="shop-item-card">
+                            <div class="item-img-container">
+                                <img src="buldak_spicy.jpg" alt="Buldak Spicy">
+                                <button class="add-badge">ADD</button>
+                                <div class="quantity-control hidden">
+                                    <button class="qty-btn minus">-</button>
+                                    <span class="qty-val">0</span>
+                                    <button class="qty-btn plus">+</button>
+                                </div>
+                            </div>
+                            <div class="item-details">
+                                <div class="price-row">
+                                    <span class="curr-price">₹125</span>
+                                    <span class="old-price">₹150</span>
+                                </div>
+                                <div class="discount-text">₹25 OFF</div>
+                                <h4 class="item-name">Buldak 2x Spicy Hot Ramen</h4>
+                                <div class="item-meta">Extreme Heat (140g)</div>
+                                <div class="item-tag">Super Hot</div>
+                                <div class="item-rating">⭐ 4.9 (3.2k)</div>
+                            </div>
+                        </div>
+
+                        <!-- Heart Bouquet -->
+                        <div class="shop-item-card">
+                            <div class="item-img-container">
+                                <img src="farrero_heart.jpg" alt="Heart Bouquet">
+                                <button class="add-badge">ADD</button>
+                                <div class="quantity-control hidden">
+                                    <button class="qty-btn minus">-</button>
+                                    <span class="qty-val">0</span>
+                                    <button class="qty-btn plus">+</button>
+                                </div>
+                            </div>
+                            <div class="item-details">
+                                <div class="price-row">
+                                    <span class="curr-price">₹1196</span>
+                                    <span class="old-price">₹2390</span>
+                                </div>
+                                <div class="discount-text">₹1.2K OFF</div>
+                                <h4 class="item-name">Ferrero Rocher Heart Bouquet</h4>
+                                <div class="item-meta">Valentine Special Hamper</div>
+                                <div class="item-tag">Luxury Gift</div>
+                                <div class="item-rating">⭐ 4.9 (1.2k)</div>
+                            </div>
+                        </div>
+
+                        <!-- Buldak Cup -->
+                        <div class="shop-item-card">
+                            <div class="item-img-container">
+                                <img src="buldak_cup.jpg" alt="Buldak Cup">
+                                <button class="add-badge">ADD</button>
+                                <div class="quantity-control hidden">
+                                    <button class="qty-btn minus">-</button>
+                                    <span class="qty-val">0</span>
+                                    <button class="qty-btn plus">+</button>
+                                </div>
+                            </div>
+                            <div class="item-details">
+                                <div class="price-row">
+                                    <span class="curr-price">₹185</span>
+                                    <span class="old-price">₹210</span>
+                                </div>
+                                <div class="discount-text">₹25 OFF</div>
+                                <h4 class="item-name">Buldak Ramen Hot Cup</h4>
+                                <div class="item-meta">Convenient Cup (70g)</div>
+                                <div class="item-tag">Instant Snack</div>
+                                <div class="item-rating">⭐ 4.8 (5k)</div>
+                            </div>
+                        </div>
+
+                        <!-- Cheese Ramen -->
+                        <div class="shop-item-card">
+                            <div class="item-img-container">
+                                <img src="cheese_ramen.jpg" alt="Cheese Ramen">
+                                <button class="add-badge">ADD</button>
+                                <div class="quantity-control hidden">
+                                    <button class="qty-btn minus">-</button>
+                                    <span class="qty-val">0</span>
+                                    <button class="qty-btn plus">+</button>
+                                </div>
+                            </div>
+                            <div class="item-details">
+                                <div class="price-row">
+                                    <span class="curr-price">₹130</span>
+                                    <span class="old-price">₹165</span>
+                                </div>
+                                <div class="discount-text">₹35 OFF</div>
+                                <h4 class="item-name">Spicy Cheese Creamy Ramen</h4>
+                                <div class="item-meta">Cheesy Comfort (120g)</div>
+                                <div class="item-tag">Cheesy Spice</div>
+                                <div class="item-rating">⭐ 4.6 (1.1k)</div>
+                            </div>
+                        </div>
+
+                        <!-- Extra Snacks 7-12 -->
+                        <div class="shop-item-card">
+                            <div class="item-img-container">
+                                <img src="extra_snack_7.jpg" alt="Lay's Classic Salted">
+                                <button class="add-badge">ADD</button>
+                                <div class="quantity-control hidden">
+                                    <button class="qty-btn minus">-</button>
+                                    <span class="qty-val">0</span>
+                                    <button class="qty-btn plus">+</button>
+                                </div>
+                            </div>
+                            <div class="item-details">
+                                <div class="price-row"><span class="curr-price">₹20</span></div>
+                                <div class="discount-text">NEW ARRIVAL</div>
+                                <h4 class="item-name">Lay's Classic Salted</h4>
+                                <div class="item-meta">Yellow Classic</div>
+                                <div class="item-tag">New</div>
+                                <div class="item-rating">⭐ 4.8 (2.5k)</div>
+                            </div>
+                        </div>
+
+                        <div class="shop-item-card">
+                            <div class="item-img-container">
+                                <img src="extra_snack_8.jpg" alt="Lay's Magic Masala">
+                                <button class="add-badge">ADD</button>
+                                <div class="quantity-control hidden">
+                                    <button class="qty-btn minus">-</button>
+                                    <span class="qty-val">0</span>
+                                    <button class="qty-btn plus">+</button>
+                                </div>
+                            </div>
+                            <div class="item-details">
+                                <div class="price-row"><span class="curr-price">₹20</span></div>
+                                <div class="discount-text">LIMITED EDITION</div>
+                                <h4 class="item-name">Lay's India's Magic Masala</h4>
+                                <div class="item-meta">Blue Magic</div>
+                                <div class="item-tag">Valentine Special</div>
+                                <div class="item-rating">⭐ 4.9 (3.2k)</div>
+                            </div>
+                        </div>
+
+                        <div class="shop-item-card">
+                            <div class="item-img-container">
+                                <img src="extra_snack_9.jpg" alt="Lay's Sizzlin' Hot">
+                                <button class="add-badge">ADD</button>
+                                <div class="quantity-control hidden">
+                                    <button class="qty-btn minus">-</button>
+                                    <span class="qty-val">0</span>
+                                    <button class="qty-btn plus">+</button>
+                                </div>
+                            </div>
+                            <div class="item-details">
+                                <div class="price-row"><span class="curr-price">₹20</span></div>
+                                <div class="discount-text">QUICK SNACK</div>
+                                <h4 class="item-name">Lay's Sizzlin' Hot</h4>
+                                <div class="item-meta">Red Heat</div>
+                                <div class="item-tag">Spicy</div>
+                                <div class="item-rating">⭐ 4.9 (1.2k)</div>
+                            </div>
+                        </div>
+
+                        <div class="shop-item-card">
+                            <div class="item-img-container">
+                                <img src="extra_snack_10.jpg" alt="Lay's Chile Limon">
+                                <button class="add-badge">ADD</button>
+                                <div class="quantity-control hidden">
+                                    <button class="qty-btn minus">-</button>
+                                    <span class="qty-val">0</span>
+                                    <button class="qty-btn plus">+</button>
+                                </div>
+                            </div>
+                            <div class="item-details">
+                                <div class="price-row"><span class="curr-price">₹20</span></div>
+                                <div class="discount-text">BESTSELLER</div>
+                                <h4 class="item-name">Lay's Chile Limon</h4>
+                                <div class="item-meta">Green Tang</div>
+                                <div class="item-tag">Premium</div>
+                                <div class="item-rating">⭐ 4.8 (5k)</div>
+                            </div>
+                        </div>
+
+                        <div class="shop-item-card">
+                            <div class="item-img-container">
+                                <img src="extra_snack_11.jpg" alt="Lay's Maxx">
+                                <button class="add-badge">ADD</button>
+                                <div class="quantity-control hidden">
+                                    <button class="qty-btn minus">-</button>
+                                    <span class="qty-val">0</span>
+                                    <button class="qty-btn plus">+</button>
+                                </div>
+                            </div>
+                            <div class="item-details">
+                                <div class="price-row"><span class="curr-price">₹20</span></div>
+                                <div class="discount-text">PARTY PACK</div>
+                                <h4 class="item-name">Lay's Maxx Macho Chili</h4>
+                                <div class="item-meta">Maxx Ridges</div>
+                                <div class="item-tag">Spicy</div>
+                                <div class="item-rating">⭐ 4.6 (1.1k)</div>
+                            </div>
+                        </div>
+
+                        <div class="shop-item-card">
+                            <div class="item-img-container">
+                                <img src="extra_snack_12.jpg" alt="Doritos">
+                                <button class="add-badge">ADD</button>
+                                <div class="quantity-control hidden">
+                                    <button class="qty-btn minus">-</button>
+                                    <span class="qty-val">0</span>
+                                    <button class="qty-btn plus">+</button>
+                                </div>
+                            </div>
+                            <div class="item-details">
+                                <div class="price-row"><span class="curr-price">₹30</span></div>
+                                <div class="discount-text">BEST VALUE</div>
+                                <h4 class="item-name">Doritos Flamin' Hot Nacho</h4>
+                                <div class="item-meta">Hot & Crunchy</div>
+                                <div class="item-tag">Crunchy</div>
+                                <div class="item-rating">⭐ 4.7 (120)</div>
+                            </div>
+                        </div>
+
+                        <!-- Dress 1 -->
+                        <div class="shop-item-card">
+                            <div class="item-img-container">
+                                <img src="dress_summer.jpg" alt="Summer Dress">
+                                <button class="add-badge">ADD</button>
+                                <div class="quantity-control hidden">
+                                    <button class="qty-btn minus">-</button>
+                                    <span class="qty-val">0</span>
+                                    <button class="qty-btn plus">+</button>
+                                </div>
+                            </div>
+                            <div class="item-details">
+                                <div class="price-row">
+                                    <span class="curr-price">₹1,199</span>
+                                    <span class="old-price">₹2,499</span>
+                                </div>
+                                <div class="discount-text">₹1,300 OFF</div>
+                                <h4 class="item-name">Romance Summer Plisse Dress</h4>
+                                <div class="item-meta">Lightweight Chiffon</div>
+                                <div class="item-tag">Summer Edit</div>
+                                <div class="item-rating">⭐ 4.8 (850)</div>
+                            </div>
+                        </div>
+
+                        <!-- Dress 2 -->
+                        <div class="shop-item-card">
+                            <div class="item-img-container">
+                                <img src="dress_colourblock.jpg" alt="Colourblock Dress">
+                                <button class="add-badge">ADD</button>
+                                <div class="quantity-control hidden">
+                                    <button class="qty-btn minus">-</button>
+                                    <span class="qty-val">0</span>
+                                    <button class="qty-btn plus">+</button>
+                                </div>
+                            </div>
+                            <div class="item-details">
+                                <div class="price-row">
+                                    <span class="curr-price">₹1,450</span>
+                                    <span class="old-price">₹3,200</span>
+                                </div>
+                                <div class="discount-text">₹1,750 OFF</div>
+                                <h4 class="item-name">Puff Sleeve Colourblock Dress</h4>
+                                <div class="item-meta">Elegant Evening Wear</div>
+                                <div class="item-tag">Designer Style</div>
+                                <div class="item-rating">⭐ 4.9 (1.2k)</div>
+                            </div>
+                        </div>
+
+                        <!-- Dress 3 -->
+                        <div class="shop-item-card">
+                            <div class="item-img-container">
+                                <img src="dress_corset.jpg" alt="Corset Dress">
+                                <button class="add-badge">ADD</button>
+                                <div class="quantity-control hidden">
+                                    <button class="qty-btn minus">-</button>
+                                    <span class="qty-val">0</span>
+                                    <button class="qty-btn plus">+</button>
+                                </div>
+                            </div>
+                            <div class="item-details">
+                                <div class="price-row">
+                                    <span class="curr-price">₹1,890</span>
+                                    <span class="old-price">₹3,500</span>
+                                </div>
+                                <div class="discount-text">₹1,610 OFF</div>
+                                <h4 class="item-name">Floral Lace Corset Dress</h4>
+                                <div class="item-meta">Silk & Lace Blend</div>
+                                <div class="item-tag">Valentine's Best</div>
+                                <div class="item-rating">⭐ 4.7 (430)</div>
+                            </div>
+                        </div>
+
+                        <!-- Dress 4 -->
+                        <div class="shop-item-card">
+                            <div class="item-img-container">
+                                <img src="dress_floral.jpg" alt="Floral Dress">
+                                <button class="add-badge">ADD</button>
+                                <div class="quantity-control hidden">
+                                    <button class="qty-btn minus">-</button>
+                                    <span class="qty-val">0</span>
+                                    <button class="qty-btn plus">+</button>
+                                </div>
+                            </div>
+                            <div class="item-details">
+                                <div class="price-row">
+                                    <span class="curr-price">₹950</span>
+                                    <span class="old-price">₹2,100</span>
+                                </div>
+                                <div class="discount-text">₹1,150 OFF</div>
+                                <h4 class="item-name">Vintage Botanical Floral Dress</h4>
+                                <div class="item-meta">Premium Cotton</div>
+                                <div class="item-tag">Trending</div>
+                                <div class="item-rating">⭐ 4.6 (960)</div>
+                            </div>
+                        </div>
+
+                        <!-- Dress 5 -->
+                        <div class="shop-item-card">
+                            <div class="item-img-container">
+                                <img src="dress_sequin.jpg" alt="Sequin Dress">
+                                <button class="add-badge">ADD</button>
+                                <div class="quantity-control hidden">
+                                    <button class="qty-btn minus">-</button>
+                                    <span class="qty-val">0</span>
+                                    <button class="qty-btn plus">+</button>
+                                </div>
+                            </div>
+                            <div class="item-details">
+                                <div class="price-row">
+                                    <span class="curr-price">₹2,200</span>
+                                    <span class="old-price">₹5,500</span>
+                                </div>
+                                <div class="discount-text">₹3,300 OFF</div>
+                                <h4 class="item-name">Sequin Sparkling Homecoming Dress</h4>
+                                <div class="item-meta">Party Luxe Edition</div>
+                                <div class="item-tag">Luxury Partiy</div>
+                                <div class="item-rating">⭐ 5.0 (2k)</div>
+                            </div>
+                        </div>
+
+                        <!-- Dress 6 -->
+                        <div class="shop-item-card">
+                            <div class="item-img-container">
+                                <img src="dress_mermaid.jpg" alt="Mermaid Dress">
+                                <button class="add-badge">ADD</button>
+                                <div class="quantity-control hidden">
+                                    <button class="qty-btn minus">-</button>
+                                    <span class="qty-val">0</span>
+                                    <button class="qty-btn plus">+</button>
+                                </div>
+                            </div>
+                            <div class="item-details">
+                                <div class="price-row">
+                                    <span class="curr-price">₹2,500</span>
+                                    <span class="old-price">₹7,200</span>
+                                </div>
+                                <div class="discount-text">₹4,700 OFF</div>
+                                <h4 class="item-name">Long Mermaid Evening Ball Gown</h4>
+                                <div class="item-meta">Beaded Lace Work</div>
+                                <div class="item-tag">Royalty Edit</div>
+                                <div class="item-rating">⭐ 4.9 (500)</div>
+                            </div>
+                        </div>
+
+                        <!-- Dress 7 -->
+                        <div class="shop-item-card">
+                            <div class="item-img-container">
+                                <img src="dress_strawberry.jpg" alt="Strawberry Dress">
+                                <button class="add-badge">ADD</button>
+                                <div class="quantity-control hidden">
+                                    <button class="qty-btn minus">-</button>
+                                    <span class="qty-val">0</span>
+                                    <button class="qty-btn plus">+</button>
+                                </div>
+                            </div>
+                            <div class="item-details">
+                                <div class="price-row">
+                                    <span class="curr-price">₹1,100</span>
+                                    <span class="old-price">₹2,800</span>
+                                </div>
+                                <div class="discount-text">₹1,700 OFF</div>
+                                <h4 class="item-name">Pink 1950s Strawberry Dress</h4>
+                                <div class="item-meta">Vintage Spaghetti Strap</div>
+                                <div class="item-tag">Coquette Core</div>
+                                <div class="item-rating">⭐ 4.8 (1.5k)</div>
+                            </div>
+                        </div>
+
+                        <!-- Dress 8 -->
+                        <div class="shop-item-card">
+                            <div class="item-img-container">
+                                <img src="dress_princess.jpg" alt="Princess Dress">
+                                <button class="add-badge">ADD</button>
+                                <div class="quantity-control hidden">
+                                    <button class="qty-btn minus">-</button>
+                                    <span class="qty-val">0</span>
+                                    <button class="qty-btn plus">+</button>
+                                </div>
+                            </div>
+                            <div class="item-details">
+                                <div class="price-row">
+                                    <span class="curr-price">₹3,800</span>
+                                    <span class="old-price">₹8,500</span>
+                                </div>
+                                <div class="discount-text">₹4,700 OFF</div>
+                                <h4 class="item-name">Rosa Fairy Princess Abendkleid</h4>
+                                <div class="item-meta">Handcrafted Anniversary Gown</div>
+                                <div class="item-tag">Bestseller</div>
+                                <div class="item-rating">⭐ 5.0 (3.2k)</div>
+                            </div>
+                        </div>
+
+                        <!-- Dress 9 -->
+                        <div class="shop-item-card">
+                            <div class="item-img-container">
+                                <img src="dress_burgundy.jpg" alt="Burgundy Dress">
+                                <button class="add-badge">ADD</button>
+                                <div class="quantity-control hidden">
+                                    <button class="qty-btn minus">-</button>
+                                    <span class="qty-val">0</span>
+                                    <button class="qty-btn plus">+</button>
+                                </div>
+                            </div>
+                            <div class="item-details">
+                                <div class="price-row">
+                                    <span class="curr-price">₹1,400</span>
+                                    <span class="old-price">₹4,200</span>
+                                </div>
+                                <div class="discount-text">₹2,800 OFF</div>
+                                <h4 class="item-name">Vintage Burgundy Chiffon Dress</h4>
+                                <div class="item-meta">Elegant Formals</div>
+                                <div class="item-tag">Evening Wear</div>
+                                <div class="item-rating">⭐ 4.6 (220)</div>
+                            </div>
+                        </div>
+
+                        <!-- Dress 10 -->
+                        <div class="shop-item-card">
+                            <div class="item-img-container">
+                                <img src="dress_vintage.jpg" alt="Vintage Dress">
+                                <button class="add-badge">ADD</button>
+                                <div class="quantity-control hidden">
+                                    <button class="qty-btn minus">-</button>
+                                    <span class="qty-val">0</span>
+                                    <button class="qty-btn plus">+</button>
+                                </div>
+                            </div>
+                            <div class="item-details">
+                                <div class="price-row">
+                                    <span class="curr-price">₹850</span>
+                                    <span class="old-price">₹2,300</span>
+                                </div>
+                                <div class="discount-text">₹1,450 OFF</div>
+                                <h4 class="item-name">Botanical Floral Print Dress</h4>
+                                <div class="item-meta">Long Beach/Tea Party Dress</div>
+                                <div class="item-tag">Vintage</div>
+                                <div class="item-rating">⭐ 4.5 (110)</div>
+                            </div>
+                        </div>
+
+                        <!-- Necklace 1 -->
+                        <div class="shop-item-card">
+                            <div class="item-img-container">
+                                <img src="necklace_daisy.jpg" alt="Daisy Necklace">
+                                <button class="add-badge">ADD</button>
+                                <div class="quantity-control hidden">
+                                    <button class="qty-btn minus">-</button>
+                                    <span class="qty-val">0</span>
+                                    <button class="qty-btn plus">+</button>
+                                </div>
+                            </div>
+                            <div class="item-details">
+                                <div class="price-row">
+                                    <span class="curr-price">₹750</span>
+                                    <span class="old-price">₹999</span>
+                                </div>
+                                <div class="discount-text">₹249 OFF</div>
+                                <h4 class="item-name">Korean Daisy Flower Necklace</h4>
+                                <div class="item-meta">Silver Plated Jewelry</div>
+                                <div class="item-tag">Cute & Dainty</div>
+                                <div class="item-rating">⭐ 4.8 (8k)</div>
+                            </div>
+                        </div>
+
+                        <!-- Necklace 2 -->
+                        <div class="shop-item-card">
+                            <div class="item-img-container">
+                                <img src="necklace_heart.jpg" alt="Heart Necklace">
+                                <button class="add-badge">ADD</button>
+                                <div class="quantity-control hidden">
+                                    <button class="qty-btn minus">-</button>
+                                    <span class="qty-val">0</span>
+                                    <button class="qty-btn plus">+</button>
+                                </div>
+                            </div>
+                            <div class="item-details">
+                                <div class="price-row">
+                                    <span class="curr-price">₹1,250</span>
+                                    <span class="old-price">₹1,800</span>
+                                </div>
+                                <div class="discount-text">₹550 OFF</div>
+                                <h4 class="item-name">Golden Heart Pendant Necklace</h4>
+                                <div class="item-meta">18K Gold Finish</div>
+                                <div class="item-tag">Limited Stock</div>
+                                <div class="item-rating">⭐ 4.9 (12k)</div>
+                            </div>
+                        </div>
+
+                        <!-- Necklace 3 -->
+                        <div class="shop-item-card">
+                            <div class="item-img-container">
+                                <img src="necklace_silver.jpg" alt="Silver Necklace">
+                                <button class="add-badge">ADD</button>
+                                <div class="quantity-control hidden">
+                                    <button class="qty-btn minus">-</button>
+                                    <span class="qty-val">0</span>
+                                    <button class="qty-btn plus">+</button>
+                                </div>
+                            </div>
+                            <div class="item-details">
+                                <div class="price-row">
+                                    <span class="curr-price">₹950</span>
+                                    <span class="old-price">₹1,200</span>
+                                </div>
+                                <div class="discount-text">₹250 OFF</div>
+                                <h4 class="item-name">Prata Elegante Silver Chain</h4>
+                                <div class="item-meta">Cubic Zirconia Embedded</div>
+                                <div class="item-tag">Daily Wear</div>
+                                <div class="item-rating">⭐ 4.7 (3.5k)</div>
+                            </div>
+                        </div>
+
+                        <!-- Earring 1 -->
+                        <div class="shop-item-card">
+                            <div class="item-img-container">
+                                <img src="14k%20Gold%20Butterfly%20Stud%20Earrings,%20Diamond%20Accent,%20_925%20Silver.jpg" alt="Butterfly Earrings">
+                                <button class="add-badge">ADD</button>
+                                <div class="quantity-control hidden">
+                                    <button class="qty-btn minus">-</button>
+                                    <span class="qty-val">0</span>
+                                    <button class="qty-btn plus">+</button>
+                                </div>
+                            </div>
+                            <div class="item-details">
+                                <div class="price-row">
+                                    <span class="curr-price">₹350</span>
+                                    <span class="old-price">₹599</span>
+                                </div>
+                                <div class="discount-text">₹249 OFF</div>
+                                <h4 class="item-name">14k Gold Butterfly Stud Earrings</h4>
+                                <div class="item-meta">Diamond Accent, 925 Silver</div>
+                                <div class="item-tag">Valentine's Special</div>
+                                <div class="item-rating">⭐ 4.9 (1.2k)</div>
+                            </div>
+                        </div>
+
+                        <!-- Earring 2 -->
+                        <div class="shop-item-card">
+                            <div class="item-img-container">
+                                <img src="Beautiful%20Earth%20Jewelry%20_%20Sparkly%20Earrings%20_%20Color_%20Gold_White%20_%20Size_%20Os.jpg" alt="Sparkly Earrings">
+                                <button class="add-badge">ADD</button>
+                                <div class="quantity-control hidden">
+                                    <button class="qty-btn minus">-</button>
+                                    <span class="qty-val">0</span>
+                                    <button class="qty-btn plus">+</button>
+                                </div>
+                            </div>
+                            <div class="item-details">
+                                <div class="price-row">
+                                    <span class="curr-price">₹420</span>
+                                    <span class="old-price">₹750</span>
+                                </div>
+                                <div class="discount-text">₹330 OFF</div>
+                                <h4 class="item-name">Sparkly Earth Gold Earrings</h4>
+                                <div class="item-meta">Gold/White Finish</div>
+                                <div class="item-tag">Bestseller</div>
+                                <div class="item-rating">⭐ 4.8 (850)</div>
+                            </div>
+                        </div>
+
+                        <!-- Earring 3 -->
+                        <div class="shop-item-card">
+                            <div class="item-img-container">
+                                <img src="High%20jewelry%20sapphire%20earrings%20unusual%20shape%20silver,%20original%20elements%20grown.jpg" alt="Sapphire Earrings">
+                                <button class="add-badge">ADD</button>
+                                <div class="quantity-control hidden">
+                                    <button class="qty-btn minus">-</button>
+                                    <span class="qty-val">0</span>
+                                    <button class="qty-btn plus">+</button>
+                                </div>
+                            </div>
+                            <div class="item-details">
+                                <div class="price-row">
+                                    <span class="curr-price">₹550</span>
+                                    <span class="old-price">₹999</span>
+                                </div>
+                                <div class="discount-text">₹449 OFF</div>
+                                <h4 class="item-name">Sapphire Silver Earrings</h4>
+                                <div class="item-meta">Unusual Shape, Silver 925</div>
+                                <div class="item-tag">Luxury Edit</div>
+                                <div class="item-rating">⭐ 5.0 (300)</div>
+                            </div>
+                        </div>
+
+                        <!-- Earring 4 -->
+                        <div class="shop-item-card">
+                            <div class="item-img-container">
+                                <img src="Den%20perfekte%20gave%20er%20den,%20der%20betyder%20noget%20💝_Disse%20fine%20firkløver-ørestikker%20fra%20@joanlinor%20er%20en%20smuk%20gave%20til%20konfirmanden%20–%20som%20minde%20for%20en%20helt%20særlig%20dag%20og%20et%20lykkebringende%20forår%20🍀✨.jpg" alt="Clover Earrings">
+                                <button class="add-badge">ADD</button>
+                                <div class="quantity-control hidden">
+                                    <button class="qty-btn minus">-</button>
+                                    <span class="qty-val">0</span>
+                                    <button class="qty-btn plus">+</button>
+                                </div>
+                            </div>
+                            <div class="item-details">
+                                <div class="price-row">
+                                    <span class="curr-price">₹320</span>
+                                    <span class="old-price">₹450</span>
+                                </div>
+                                <div class="discount-text">₹130 OFF</div>
+                                <h4 class="item-name">Fine Four-Leaf Clover Studs</h4>
+                                <div class="item-meta">Joan Linoor Collection</div>
+                                <div class="item-tag">New</div>
+                                <div class="item-rating">⭐ 4.7 (120)</div>
+                            </div>
+                        </div>
+
+                        <!-- Earring 5 -->
+                        <div class="shop-item-card">
+                            <div class="item-img-container">
+                                <img src="گوشواره%20های%20قلبی%20در%20طرح%20های%20مختلف%20با%20وزن%20و%20ابعاد%20دلخواه%20شما😍🩷_وزن%20حدودی%20از%200_500%20سوت%20تا%201%20گرم✨️_قیمت%20حدودی%20از%20%20۷%20میلیون%20تا%20۱۵%20میلیون💶_@aabru_gallery_سبک%20و%20خوش%20قیمت%20و%20زیبا😍_بهترین%20انتخاب%20بر.jpg" alt="Heart Earrings">
+                                <button class="add-badge">ADD</button>
+                                <div class="quantity-control hidden">
+                                    <button class="qty-btn minus">-</button>
+                                    <span class="qty-val">0</span>
+                                    <button class="qty-btn plus">+</button>
+                                </div>
+                            </div>
+                            <div class="item-details">
+                                <div class="price-row">
+                                    <span class="curr-price">₹480</span>
+                                    <span class="old-price">₹650</span>
+                                </div>
+                                <div class="discount-text">₹170 OFF</div>
+                                <h4 class="item-name">Golden Heart Collection Earrings</h4>
+                                <div class="item-meta">Handcrafted Design</div>
+                                <div class="item-tag">Popular</div>
+                                <div class="item-rating">⭐ 4.9 (240)</div>
+                            </div>
+                        </div>
+
+                        <!-- Earring 6 -->
+                        <div class="shop-item-card">
+                            <div class="item-img-container">
+                                <img src="💎Harry%20Winston💎.jpg" alt="Harry Winston Inspired">
+                                <button class="add-badge">ADD</button>
+                                <div class="quantity-control hidden">
+                                    <button class="qty-btn minus">-</button>
+                                    <span class="qty-val">0</span>
+                                    <button class="qty-btn plus">+</button>
+                                </div>
+                            </div>
+                            <div class="item-details">
+                                <div class="price-row">
+                                    <span class="curr-price">₹499</span>
+                                    <span class="old-price">₹899</span>
+                                </div>
+                                <div class="discount-text">₹400 OFF</div>
+                                <h4 class="item-name">Luxe Diamond Cut Earrings</h4>
+                                <div class="item-meta">Harry Winston Style</div>
+                                <div class="item-tag">Premium</div>
+                                <div class="item-rating">⭐ 5.0 (50)</div>
+                            </div>
+                        </div>
+
+                        <!-- Perfume 1: Victoria Secret -->
+                        <div class="shop-item-card">
+                            <div class="item-img-container">
+                                <img src="2%20Pack%20Pure%20Seduction%20By%20Victorias%20Secret%20For%20Women%20-%208_4%20Oz%20Fragrance%20Mist.jpg" alt="Victoria Secret">
+                                <button class="add-badge">ADD</button>
+                                <div class="quantity-control hidden">
+                                    <button class="qty-btn minus">-</button>
+                                    <span class="qty-val">0</span>
+                                    <button class="qty-btn plus">+</button>
+                                </div>
+                            </div>
+                            <div class="item-details">
+                                <div class="price-row">
+                                    <span class="curr-price">₹1,200</span>
+                                    <span class="old-price">₹1,800</span>
+                                </div>
+                                <div class="discount-text">₹600 OFF</div>
+                                <h4 class="item-name">Victoria's Secret Pure Seduction</h4>
+                                <div class="item-meta">2 Pack Fragrance Mist</div>
+                                <div class="item-tag">Bestseller</div>
+                                <div class="item-rating">⭐ 4.9 (5.2k)</div>
+                            </div>
+                        </div>
+
+                        <!-- Perfume 2: Armani My Way -->
+                        <div class="shop-item-card">
+                            <div class="item-img-container">
+                                <img src="Armani%20Beauty%20My%20Way%20Parfum%20-%20Floral,%20Vanilla%20Wood%20Perfume%20_%203_3%20Oz_100%20Ml%20_%20Women's%20Perfume.jpg" alt="Armani My Way">
+                                <button class="add-badge">ADD</button>
+                                <div class="quantity-control hidden">
+                                    <button class="qty-btn minus">-</button>
+                                    <span class="qty-val">0</span>
+                                    <button class="qty-btn plus">+</button>
+                                </div>
+                            </div>
+                            <div class="item-details">
+                                <div class="price-row">
+                                    <span class="curr-price">₹4,200</span>
+                                    <span class="old-price">₹12,000</span>
+                                </div>
+                                <div class="discount-text">₹7.8K OFF</div>
+                                <h4 class="item-name">Armani My Way Parfum</h4>
+                                <div class="item-meta">Floral & Vanilla (100ml)</div>
+                                <div class="item-tag">Luxury</div>
+                                <div class="item-rating">⭐ 4.8 (1.1k)</div>
+                            </div>
+                        </div>
+
+                        <!-- Perfume 3: Bellavita Luxury -->
+                        <div class="shop-item-card">
+                            <div class="item-img-container">
+                                <img src="Bellavita%20Luxury%20Unisex%20Gift%20Set%20With%20Honey%20Oud,%20White%20Oud,%20Fresh%20&%20Skai%20_%20Fruit.jpg" alt="Bellavita Set">
+                                <button class="add-badge">ADD</button>
+                                <div class="quantity-control hidden">
+                                    <button class="qty-btn minus">-</button>
+                                    <span class="qty-val">0</span>
+                                    <button class="qty-btn plus">+</button>
+                                </div>
+                            </div>
+                            <div class="item-details">
+                                <div class="price-row">
+                                    <span class="curr-price">₹399</span>
+                                    <span class="old-price">₹999</span>
+                                </div>
+                                <div class="discount-text">₹600 OFF</div>
+                                <h4 class="item-name">Bellavita Luxury Unisex Set</h4>
+                                <div class="item-meta">4x20ml Gift Pack</div>
+                                <div class="item-tag">Gift Special</div>
+                                <div class="item-rating">⭐ 4.7 (15k)</div>
+                            </div>
+                        </div>
+
+                        <!-- Perfume 4: Chanel -->
+                        <div class="shop-item-card">
+                            <div class="item-img-container">
+                                <img src="CHANEL%20COCO%20MADEMOISELLE%20Eau%20de%20Parfum%20Intense%20_%20Nordstrom.jpg" alt="Chanel Coco">
+                                <button class="add-badge">ADD</button>
+                                <div class="quantity-control hidden">
+                                    <button class="qty-btn minus">-</button>
+                                    <span class="qty-val">0</span>
+                                    <button class="qty-btn plus">+</button>
+                                </div>
+                            </div>
+                            <div class="item-details">
+                                <div class="price-row">
+                                    <span class="curr-price">₹6,200</span>
+                                    <span class="old-price">₹15,000</span>
+                                </div>
+                                <div class="discount-text">₹8.8K OFF</div>
+                                <h4 class="item-name">CHANEL Coco Mademoiselle</h4>
+                                <div class="item-meta">Eau de Parfum Intense</div>
+                                <div class="item-tag">Designer</div>
+                                <div class="item-rating">⭐ 5.0 (2.5k)</div>
+                            </div>
+                        </div>
+
+                        <!-- Perfume 5: Engage W2 -->
+                        <div class="shop-item-card">
+                            <div class="item-img-container">
+                                <img src="Engage%20W2%20Perfume%20for%20Women,%20Floral%20and%20Fruity%20Fragrance%20Scent,%20Skin%20Friendly%20Women%20Perfume,%20120ml.jpg" alt="Engage W2">
+                                <button class="add-badge">ADD</button>
+                                <div class="quantity-control hidden">
+                                    <button class="qty-btn minus">-</button>
+                                    <span class="qty-val">0</span>
+                                    <button class="qty-btn plus">+</button>
+                                </div>
+                            </div>
+                            <div class="item-details">
+                                <div class="price-row">
+                                    <span class="curr-price">₹199</span>
+                                    <span class="old-price">₹499</span>
+                                </div>
+                                <div class="discount-text">₹300 OFF</div>
+                                <h4 class="item-name">Engage W2 Perfume</h4>
+                                <div class="item-meta">Floral & Fruity (120ml)</div>
+                                <div class="item-tag">Daily Wear</div>
+                                <div class="item-rating">⭐ 4.5 (8k)</div>
+                            </div>
+                        </div>
+
+                        <!-- Perfume 6: Gucci Flora -->
+                        <div class="shop-item-card">
+                            <div class="item-img-container">
+                                <img src="gucci%20flora%20perfume.jpg" alt="Gucci Flora">
+                                <button class="add-badge">ADD</button>
+                                <div class="quantity-control hidden">
+                                    <button class="qty-btn minus">-</button>
+                                    <span class="qty-val">0</span>
+                                    <button class="qty-btn plus">+</button>
+                                </div>
+                            </div>
+                            <div class="item-details">
+                                <div class="price-row">
+                                    <span class="curr-price">₹4,800</span>
+                                    <span class="old-price">₹13,500</span>
+                                </div>
+                                <div class="discount-text">₹8.7K OFF</div>
+                                <h4 class="item-name">Gucci Flora Gorgeous Gardenia</h4>
+                                <div class="item-meta">Eau de Parfum (100ml)</div>
+                                <div class="item-tag">Trending</div>
+                                <div class="item-rating">⭐ 4.9 (3.2k)</div>
+                            </div>
+                        </div>
+
+                        <!-- Perfume 7: Queen Perfume -->
+                        <div class="shop-item-card">
+                            <div class="item-img-container">
+                                <img src="Queen%20Perfume%20for%20Women.jpg" alt="Queen Perfume">
+                                <button class="add-badge">ADD</button>
+                                <div class="quantity-control hidden">
+                                    <button class="qty-btn minus">-</button>
+                                    <span class="qty-val">0</span>
+                                    <button class="qty-btn plus">+</button>
+                                </div>
+                            </div>
+                            <div class="item-details">
+                                <div class="price-row">
+                                    <span class="curr-price">₹750</span>
+                                    <span class="old-price">₹2,200</span>
+                                </div>
+                                <div class="discount-text">₹1,450 OFF</div>
+                                <h4 class="item-name">Queen Perfume for Women</h4>
+                                <div class="item-meta">Royal Fragrance</div>
+                                <div class="item-tag">Elegant</div>
+                                <div class="item-rating">⭐ 4.6 (450)</div>
+                            </div>
+                        </div>
+
+                        <!-- Perfume 8: Rasasi Blue Lady -->
+                        <div class="shop-item-card">
+                            <div class="item-img-container">
+                                <img src="Rasasi%20Blue%20Lady.jpg" alt="Rasasi Blue Lady">
+                                <button class="add-badge">ADD</button>
+                                <div class="quantity-control hidden">
+                                    <button class="qty-btn minus">-</button>
+                                    <span class="qty-val">0</span>
+                                    <button class="qty-btn plus">+</button>
+                                </div>
+                            </div>
+                            <div class="item-details">
+                                <div class="price-row">
+                                    <span class="curr-price">₹450</span>
+                                    <span class="old-price">₹1,200</span>
+                                </div>
+                                <div class="discount-text">₹750 OFF</div>
+                                <h4 class="item-name">Rasasi Blue Lady</h4>
+                                <div class="item-meta">Classic Scent (40ml)</div>
+                                <div class="item-tag">Vintage</div>
+                                <div class="item-rating">⭐ 4.7 (2.1k)</div>
+                            </div>
+                        </div>
+
+                        <!-- Perfume 9: Seductive Blue -->
+                        <div class="shop-item-card">
+                            <div class="item-img-container">
+                                <img src="Seductive%20Blue%20For%20Women%20Eau%20De%20Toilette%2075ml.jpg" alt="Seductive Blue">
+                                <button class="add-badge">ADD</button>
+                                <div class="quantity-control hidden">
+                                    <button class="qty-btn minus">-</button>
+                                    <span class="qty-val">0</span>
+                                    <button class="qty-btn plus">+</button>
+                                </div>
+                            </div>
+                            <div class="item-details">
+                                <div class="price-row">
+                                    <span class="curr-price">₹1,200</span>
+                                    <span class="old-price">₹3,500</span>
+                                </div>
+                                <div class="discount-text">₹2.3K OFF</div>
+                                <h4 class="item-name">Guess Seductive Blue</h4>
+                                <div class="item-meta">Eau De Toilette (75ml)</div>
+                                <div class="item-tag">Premium</div>
+                                <div class="item-rating">⭐ 4.8 (950)</div>
+                            </div>
+                        </div>
+
+                        <!-- Perfume 10: Skinn By Titan -->
+                        <div class="shop-item-card">
+                            <div class="item-img-container">
+                                <img src="Skinn%20By%20Titan%20_%2024Seven%20Aqua%20Perfume%20-%20100%20Ml%20_%20Perfume%20For%20Man.jpg" alt="Skinn Aqua">
+                                <button class="add-badge">ADD</button>
+                                <div class="quantity-control hidden">
+                                    <button class="qty-btn minus">-</button>
+                                    <span class="qty-val">0</span>
+                                    <button class="qty-btn plus">+</button>
+                                </div>
+                            </div>
+                            <div class="item-details">
+                                <div class="price-row">
+                                    <span class="curr-price">₹945</span>
+                                    <span class="old-price">₹2,495</span>
+                                </div>
+                                <div class="discount-text">₹1,550 OFF</div>
+                                <h4 class="item-name">Skinn By Titan Aqua</h4>
+                                <div class="item-meta">24Seven Fresh (100ml)</div>
+                                <div class="item-tag">Fresh</div>
+                                <div class="item-rating">⭐ 4.6 (3.5k)</div>
+                            </div>
+                        </div>
+
+                        <!-- Perfume 11: Zara -->
+                        <div class="shop-item-card">
+                            <div class="item-img-container">
+                                <img src="ZARA%20Deutschland%20_%20Germany%20_%20Neue%20Kollektion%20Online.jpg" alt="Zara Perfume">
+                                <button class="add-badge">ADD</button>
+                                <div class="quantity-control hidden">
+                                    <button class="qty-btn minus">-</button>
+                                    <span class="qty-val">0</span>
+                                    <button class="qty-btn plus">+</button>
+                                </div>
+                            </div>
+                            <div class="item-details">
+                                <div class="price-row">
+                                    <span class="curr-price">₹1,150</span>
+                                    <span class="old-price">₹2,990</span>
+                                </div>
+                                <div class="discount-text">₹1,840 OFF</div>
+                                <h4 class="item-name">ZARA Nuit Eau de Parfum</h4>
+                                <div class="item-meta">International Collection</div>
+                                <div class="item-tag">Classy</div>
+                                <div class="item-rating">⭐ 4.8 (6.2k)</div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="shop-footer">
+                        <button id="buy-chocolates-btn" class="primary">Proceed to Buy ❤️</button>
+                        <button class="back-btn secondary">Go Back</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Checkout Summary Layer -->
+            <div id="checkout-summary-layer" class="chocolate-shop-layer hidden">
+                <div class="shop-header-mock">
+                    <div class="zepto-logo">zepto</div>
+                    <div class="checkout-step-indicator">
+                        <span class="step active">Summary</span>
+                        <span class="step-line"></span>
+                        <span class="step">Address</span>
+                        <span class="step-line"></span>
+                        <span class="step">Payment</span>
+                    </div>
+                    <div></div>
+                </div>
+                <div class="shop-card checkout-card">
+                    <div class="romantic-bg-decor">❤️ 💖 ✨ 💗</div>
+                    <div id="cart-items-list" class="cart-items-list">
+                        <!-- Items will be injected here -->
+                    </div>
+                    <div class="bill-details">
+                        <div class="bill-row"><span>Item Total</span> <span id="summary-subtotal">₹0</span></div>
+                        <div class="bill-row"><span>Delivery Fee</span> <span>FREE</span></div>
+                        <div class="bill-row promo"><span>Valentine Discount</span> <span id="summary-discount">-₹0</span></div>
+                        <hr>
+                        <div class="bill-row grand-total"><span>Grand Total</span> <span id="summary-total">₹0</span></div>
+                    </div>
+                    <div class="shop-footer">
+                        <button id="confirm-summary-btn" class="primary">Enter Address ➟</button>
+                        <button id="back-to-shop-btn" class="secondary">Edit Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Address Layer -->
+            <div id="address-layer" class="chocolate-shop-layer hidden">
+                <div class="shop-header-mock">
+                    <div class="zepto-logo">kepto</div>
+                    <div class="checkout-step-indicator">
+                        <span class="step completed">Summary</span>
+                        <span class="step-line active"></span>
+                        <span class="step active">Address</span>
+                        <span class="step-line"></span>
+                        <span class="step">Payment</span>
+                    </div>
+                    <div></div>
+                </div>
+                <div class="shop-card checkout-card">
+                    <div class="romantic-bg-decor">🌹 ✨ 💝 🌹</div>
+                    <div class="address-form">
+                        <div class="form-header-romantic">
+                            <h4>Where should we send you gifts?📍</h4>
+                        </div>
+                        <div class="input-group">
+                            <label>Receiver's Name</label>
+                            <input type="text" id="cust-name" placeholder="Enter name...">
+                        </div>
+                        <div class="input-group">
+                            <label>Delivery Address</label>
+                            <textarea id="cust-address" placeholder="Enter full address..."></textarea>
+                        </div>
+                        <div class="input-group">
+                            <label>Pincode / Zip Code</label>
+                            <input type="text" id="cust-pincode" placeholder="e.g. 560001">
+                        </div>
+                    </div>
+                    <div class="shop-footer">
+                        <button id="confirm-address-btn" class="primary">Proceed to Payment ➟</button>
+                        <button id="back-to-summary-btn" class="secondary">Back</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Payment Layer -->
+            <div id="payment-layer" class="chocolate-shop-layer hidden">
+                <div class="shop-header-mock">
+                    <div class="zepto-logo">kunju shopping app</div>
+                    <div class="checkout-step-indicator">
+                        <span class="step completed">Summary</span>
+                        <span class="step-line active"></span>
+                        <span class="step completed">Address</span>
+                        <span class="step-line active"></span>
+                        <span class="step active">Payment</span>
+                    </div>
+                    <div></div>
+                </div>
+                <div class="shop-card checkout-card payment-card">
+                    <div class="romantic-bg-decor">💎 🥂 ❤️ 💎</div>
+                    <div class="payment-methods">
+                        <div class="pay-option selected">
+                            <span>💝 Special Valentine Pay</span>
+                            <span class="pay-price">₹0</span>
+                        </div>
+                        <div class="pay-option disabled">
+                            <span>UPI (PhonePe / Google Pay)</span>
+                            <span class="pay-status">Locked</span>
+                        </div>
+                        <div class="pay-option disabled">
+                            <span>Credit / Debit Card</span>
+                            <span class="pay-status">Locked</span>
+                        </div>
+                    </div>
+                    <div class="payment-info-box">
+                        <p>Special Gift Discount Applied!</p>
+                        <small>Because you are priceless ❤️</small>
+                    </div>
+                    <div class="shop-footer">
+                        <button id="final-pay-btn" class="primary">Pay ₹0 & Confirm Order</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
